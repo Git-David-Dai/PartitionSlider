@@ -7,23 +7,28 @@
 //
 
 #import "ViewController.h"
-
-@interface ViewController ()
-
+#import "PartionSlider.h"
+@interface ViewController ()<PartionSliderDelegate>
+@property (nonatomic, strong) PartionSlider *slider;
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    self.slider = [[PartionSlider alloc]initWithDelegate:self];
+    [self.view addSubview:self.slider];
+    [self.slider makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view).offset(SliderViewPadding);
+        make.right.equalTo(self.view).offset(-SliderViewPadding);
+        make.bottom.equalTo(self.view).offset(-50);
+        make.height.equalTo(@(60));
+    }];
 }
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)didPratitionSliderChangeToIndex:(NSInteger)index {
+    NSLog(@"select to index:%ld",(long)index);
 }
-
 
 @end
