@@ -1,2 +1,2 @@
 # PartitionSlider
-A partion slider
+重写UIControl实现一个分段式的Slider滑块
